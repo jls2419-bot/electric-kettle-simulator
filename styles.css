@@ -1,0 +1,41 @@
+:root { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #263e34; background: #f4f5ef; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; }
+.simulator { width: min(860px, 100%); background: #fff; padding: 44px; border: 1px solid #dfe5dc; border-radius: 24px; box-shadow: 0 16px 60px #263e3408; }
+.eyebrow { font-size: 11px; font-weight: 750; letter-spacing: 2px; color: #748176; }
+h1 { font-size: clamp(30px, 5vw, 42px); letter-spacing: -1.5px; margin: 12px 0 8px; }
+header > p:last-child { color: #718076; line-height: 1.6; margin: 0; }
+.experiment { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 36px; margin: 30px 0; }
+.kettle-scene { background: #f3f6f1; border-radius: 18px; text-align: center; padding: 12px 12px 20px; }
+.kettle { display: block; width: 100%; max-width: 340px; margin: auto; }
+.steam { opacity: 0; }
+.water { opacity: 0; transition: opacity .25s; }
+[data-state="ready"] .water, [data-state="heating"] .water, [data-state="boiled"] .water { opacity: 1; }
+.heating-indicator { display: block; color: #a35c28; font-size: 12px; font-weight: 650; visibility: hidden; }
+[data-state="heating"] .heating-indicator { visibility: visible; }
+[data-state="heating"] .power-light { fill: #e99c4b; }
+[data-state="heating"] .steam, [data-state="boiled"] .steam { opacity: 1; }
+[data-state="heating"] .steam { animation: steam 1.6s ease-in-out infinite alternate; }
+@keyframes steam { to { transform: translateY(-6px); opacity: .35; } }
+.state-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; color: #718076; }
+.state-label { color: #4d6054; background: #edf1eb; border-radius: 7px; padding: 6px 12px; }
+[data-state="heating"] .state-label { background: #fff0db; color: #9b5921; }
+[data-state="boiled"] .state-label { background: #dff1e7; color: #22754b; }
+.temperature { font-size: 76px; letter-spacing: -5px; font-weight: 600; margin: 20px 0; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.unit { font-size: 32px; letter-spacing: -1px; font-weight: 400; color: #869287; margin-left: 7px; }
+.meter { background: #edf0e9; height: 7px; border-radius: 10px; overflow: hidden; }
+#temperature-fill { width: 0%; background: #d99b55; height: 100%; transition: width .3s; }
+.scale { display: flex; justify-content: space-between; gap: 10px; color: #7c887e; font-size: 10px; margin-top: 10px; }
+.status-message { min-height: 48px; font-size: 14px; line-height: 1.6; margin: 24px 0 0; }
+.controls { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 12px; }
+button { min-height: 50px; font: inherit; font-size: 14px; font-weight: 650; border-radius: 10px; cursor: pointer; padding: 12px; border: 1px solid #d7dfd5; }
+.secondary { background: #fff; color: #354e45; }
+.primary { background: #354e45; color: white; border-color: #354e45; display: flex; justify-content: space-between; align-items: center; }
+button:hover { filter: brightness(.95); }
+button:focus-visible { outline: 3px solid #d99b55; outline-offset: 3px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+footer { border-top: 1px solid #e8ece5; margin-top: 26px; padding-top: 20px; color: #7c887e; font-size: 11px; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+footer > span:last-child { margin-left: auto; }
+.dot { width: 6px; height: 6px; background: #83a18b; border-radius: 50%; }
+@media (max-width: 600px) { body { padding: 16px; } .simulator { padding: 24px; } .experiment { grid-template-columns: 1fr; gap: 24px; margin: 24px 0; } .kettle { max-width: 240px; } .temperature { font-size: 64px; margin: 12px 0 20px; } .controls { grid-template-columns: 1fr 1fr; } #add-water { grid-column: 1 / -1; } footer > span:last-child { margin-left: 13px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
