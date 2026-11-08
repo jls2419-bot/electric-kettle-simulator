@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electric Kettle Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="simulator" data-state="empty">
+    <header>
+      <p class="eyebrow">A LITTLE EXPERIMENT</p>
+      <h1>Electric kettle</h1>
+      <p>Add water, turn up the heat, and watch the state change.</p>
+    </header>
+
+    <section class="experiment" aria-label="Kettle simulator">
+      <div class="kettle-scene">
+        <svg class="kettle" viewBox="0 0 360 300" role="img" aria-label="Electric kettle with a water window">
+          <g class="steam" fill="none" stroke="#879b94" stroke-width="5" stroke-linecap="round">
+            <path d="M148 62c-18-15 18-22 0-40"/>
+            <path d="M180 55c-18-15 18-22 0-40"/>
+            <path d="M212 62c-18-15 18-22 0-40"/>
+          </g>
+          <path d="M249 106h28c48 0 48 105-5 105h-24" fill="none" stroke="#354e45" stroke-width="17"/>
+          <path d="M115 129 58 106l32 83 33 13" fill="#d2e0d9" stroke="#354e45" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M123 94h109l26 134q4 25-24 25H120q-28 0-24-25Z" fill="#e4ede7" stroke="#354e45" stroke-width="4"/>
+          <rect x="112" y="85" width="132" height="17" rx="8" fill="#354e45"/>
+          <path d="M162 83v-9q0-10 14-10h10q14 0 14 10v9" fill="#354e45"/>
+          <rect x="157" y="128" width="42" height="96" rx="20" fill="#c7d5ce"/>
+          <rect class="water" x="162" y="143" width="32" height="76" rx="15" fill="#72b6c5"/>
+          <path d="M173 159h11m-11 20h11m-11 20h11" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <rect x="89" y="258" width="178" height="14" rx="7" fill="#354e45"/>
+          <circle class="power-light" cx="229" cy="236" r="5" fill="#a4b2aa"/>
+        </svg>
+        <span id="heating-indicator" class="heating-indicator">● Heating in progress</span>
+      </div>
+
+      <div class="readout">
+        <div class="state-row"><span>Current state</span><strong id="state-label" class="state-label">empty</strong></div>
+        <p class="temperature"><span id="temperature">20</span><span class="unit">°C</span></p>
+        <div id="temperature-meter" class="meter" role="progressbar" aria-label="Water temperature" aria-valuemin="20" aria-valuemax="100" aria-valuenow="20"><div id="temperature-fill"></div></div>
+        <div class="scale"><span>20°C · room temperature</span><span>100°C · boiling</span></div>
+        <p id="status-message" class="status-message" role="status" aria-live="polite">Add water to begin.</p>
+      </div>
+    </section>
+
+    <div class="controls" aria-label="Kettle controls">
+      <button id="add-water" class="secondary">Add / Replace Water</button>
+      <button id="start" class="primary">Start <span aria-hidden="true">↗</span></button>
+      <button id="stop" class="secondary">Stop</button>
+    </div>
+    <footer><span class="dot"></span> Simulation speed: +5°C every second <span>20 → 100°C in 16 seconds</span></footer>
+  </main>
+</body>
+</html>
